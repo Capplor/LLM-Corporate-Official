@@ -1,7 +1,6 @@
 langchain_community
-langchain
+langchain_classic
 langchain_openai
-langchain.memory
 langchain_core
 langsmith
 streamlit_feedback
