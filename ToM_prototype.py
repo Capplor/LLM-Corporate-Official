@@ -30,7 +30,6 @@ os.environ["LANGCHAIN_API_KEY"] = st.secrets['LANGCHAIN_API_KEY']
 os.environ["LANGCHAIN_PROJECT"] = st.secrets['LANGCHAIN_PROJECT']
 os.environ["LANGCHAIN_TRACING_V2"] = 'true'
 os.environ["SPREADSHEET_URL"] = st.secrets['SPREADSHEET_URL']
-os.environ["REDIRECT_URL"] = st.secrets['REDIRECT_URL']
 # Parse input args, checking for config file
 input_args = sys.argv[1:]
 if len(input_args):
@@ -705,15 +704,6 @@ def finaliseScenario(package):
     st.session_state['feedback_text'] = feedback_text
     package["preference_feedback"] = feedback_text
     
-    # Get redirect URL
-    redirect_url = st.secrets.get("REDIRECT_URL", "")
-    
-    # Show the redirect section BEFORE the submit button
-    if redirect_url:
-        st.markdown("---")
-        st.markdown("### Next Steps")
-        st.markdown("After submitting your feedback, please complete the final questionnaire. If the screen does not show you anything please return to Prolific and contact the researcher")
-    st.markdown("---")
     
     # Submit button - NO FORM
     if st.button("Submit All Feedback", type="primary", key="submit_feedback"):
@@ -725,30 +715,7 @@ def finaliseScenario(package):
                 st.balloons()
                 st.success("🎉 Thank you! Your feedback has been submitted.")
                 
-                # Show redirect immediately after success
-                if redirect_url:
-                    st.markdown("## Congratulations! You've completed the main study.")
-                    st.markdown("### Final Step: Brief Questionnaire")
-                    st.markdown("Please complete the final questionnaire using the link below:")
-                    
-                    # Create a prominent button
-                    st.markdown(
-                        f'<div style="text-align: center; margin: 30px 0;">'
-                        f'<a href="{redirect_url}" target="_blank">'
-                        f'<button style="background-color: #4CAF50; color: white; padding: 20px 40px; border: none; border-radius: 10px; cursor: pointer; font-size: 20px; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">'
-                        f'🚀 Complete Final Questionnaire'
-                        f'</button>'
-                        f'</a>'
-                        f'</div>',
-                        unsafe_allow_html=True
-                    )
-                    
-                    st.info("The questionnaire will open in a new tab. Please complete it now to finish your participation.")
-                    
-                    # Alternative link
-                    st.markdown(f"**If the button doesn't work, use this link:**")
-                    st.markdown(f'<a href="{redirect_url}" target="_blank" style="color: #1f77b4; text-decoration: underline;">{redirect_url}</a>', unsafe_allow_html=True)
-                
+               
                 # Update state
                 st.session_state['submitted'] = True
                 st.session_state['agentState'] = 'completed'
@@ -764,15 +731,7 @@ def show_completion_page():
     """
     st.balloons()
     st.success("🎉 Thank you for participating!")
-    
-    redirect_url = st.secrets.get("REDIRECT_URL", "")
-    if redirect_url:
-        st.markdown(f"""
-        ### Final Questionnaire
-        
-        Please complete the final questionnaire:
-        [Click here to open]({redirect_url})
-        """)
+
     
     if st.button("Start New Session"):
         for key in list(st.session_state.keys()):
