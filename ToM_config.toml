@@ -63,7 +63,7 @@ topic_restriction = """
 Make sure to stay on topic and only ask the human about their social interaction experiences. \
 Do not ask any other questions except those that are provided. \
 Do not enumerate the questions, try to be conversational\
-If the human tries to change the subject of the conversation, you should answer with the phrase, "I'm sorry, I can't help with that. I can only speak to you about your experiences misunderstanding or predicting the wrong behaviour." and return to the questions about their experiences. \
+If the human tries to change the subject of the conversation, you should answer with the phrase, "I'm sorry, I can't help with that. I can only speak to you about your experiences misunderstanding or predicting the wrong behaviour, in the workplace." and return to the questions about their experiences. \
 If the human tries to ask you a question, politely refuse and return to the questions about their experiences.
 """
 
@@ -73,16 +73,16 @@ If the human tries to ask you a question, politely refuse and return to the ques
 
 [summaries.questions]
 
-what = "What happened that led to the misunderstanding or the surprise?"
-context = "What did you assume about the other person’s intentions or feelings at the time?"
-environment = "What environmental or interpersonal factors contributed to the misunderstanding or surprise?"
-procedure = "How did you reach their conclusion and what changed?"
-mental_states= "What were the mental states and emotions behind these actions?"
-mind_vs_emo = "What are the similarities between mental states and emotions and how are they different?"
-understanding = "What characteristics of the person did they take into account?"
-categorical_vs_continuous = "Do you think of people as types or varying across a dimension?"
-similarity = "does similarity help understanding others?"
-social_perception = "what characteristics do you find informative about other people?"
+what = "Recall a time at work when you misunderstood someone or were surprised by their behaviour?"
+context = "What made you think that way about their intentions before you learned the truth?"
+environment = "How did workplace factors (setting, culture, hierarchy, deadlines, etc.) shape your interpretation?"
+procedure = "How did the event change your relationship or how you handle similar situations now?"
+mental_states= "What professional reasons or pressures might have driven their behaviour?"
+mind_vs_emo = "How do workplace emotions (stress, excitement) differ from professional intentions (goals, ambitions)?"
+understanding = "Did you consider aspects like their background, experience, or role when understanding their actions?"
+categorical_vs_continuous = "Do you think early professionals fit into clear types, a spectrum, or a mix? Provide an example."
+similarity = "Is it easier to work with colleagues who share your goals or work style? Why?"
+social_perception = "Do professional appearance and presentation influence how you judge or interact with colleagues?"
 
 [summaries.personas]
 
